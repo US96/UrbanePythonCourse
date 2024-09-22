@@ -12,4 +12,4 @@ if first == second == third:
 elif first == second or first == third or second == third:
     print("2 (Только два числа одинаковые)")
 else:
-    print("0 (Нет одинаковых чисел разные)")
+    print("0 (Нет одинаковых чисел)")
