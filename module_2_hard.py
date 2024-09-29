@@ -8,4 +8,4 @@ def generate_password(n):
                 result += f"{i}{j}"  # Добавляем пару к результату
     return result
 n = int(input("Введите число от 3 до 20: "))
-    print(generate_password(n))
+print(generate_password(n))
