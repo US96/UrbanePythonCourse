@@ -7,8 +7,5 @@ def generate_password(n):
             if (i + j) % n == 0:
                 result += f"{i}{j}"  # Добавляем пару к результату
     return result
-
-
-# Пример вызова функции с числом 9
 n = int(input("Введите число от 3 до 20: "))
-print(generate_password(n))
+    print(generate_password(n))
