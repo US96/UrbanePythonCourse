@@ -1,19 +1,26 @@
+# Функция с параметрами по умолчанию
 def print_params(a=1, b='строка', c=True):
     print(a, b, c)
 
-# 1. Вызовы с разным количеством аргументов
-print_params()                    # 1, строка, True
-print_params(b=25)                # 1, 25, True
-print_params(c=[1, 2, 3])         # 1, строка, [1, 2, 3]
-print_params(10, 'example', False)  # 10, example, False
 
-# 2. Распаковка параметров из списка и словаря
-values_list = [42, "Hello", False]
-values_dict = {'a': 100, 'b': 'Test', 'c': [7, 8, 9]}
+# Часть 1: Вызовы функции с различными аргументами
+print_params()  # Вывод: 1 строка True
+print_params(10)  # Вывод: 10 строка True
+print_params(b=25)  # Вывод: 1 25 True
+print_params(c=[1, 2, 3])  # Вывод: 1 строка [1, 2, 3]
 
-print_params(*values_list)         # 42, Hello, False
-print_params(**values_dict)        # 100, Test, [7, 8, 9]
+# Часть 2: Распаковка списка и словаря
+values_list = [100, 'Hello', False]
+values_dict = {'a': 200, 'b': 'World', 'c': True}
 
-# 3. Распаковка + отдельные параметры
+# Распаковка списка
+print_params(*values_list)  # Вывод: 100 Hello False
+
+# Распаковка словаря
+print_params(**values_dict)  # Вывод: 200 World True
+
+# Часть 3: Распаковка + отдельные параметры
 values_list_2 = [54.32, 'Строка']
-print_params(*values_list_2, 42)   # 54.32, Строка, 42
+
+# Распаковываем список и добавляем отдельный параметр
+print_params(*values_list_2, 42)  # Вывод: 54.32 Строка 42
