@@ -8,7 +8,12 @@ def get_multiplied_digits(number):
 
     # Базовый случай: если длина строки равна 1, возвращаем первую цифру
     if len(str_number) == 1:
-        return first
+        # Если это цифра 0, пропускаем её
+        return first if first != 0 else 1
+
+    # Если первая цифра равна 0, пропускаем её и продолжаем с оставшимися цифрами
+    if first == 0:
+        return get_multiplied_digits(int(str_number[1:]))
 
     # Рекурсивный случай: умножаем первую цифру на результат функции с остальными цифрами
     return first * get_multiplied_digits(int(str_number[1:]))
@@ -19,3 +24,7 @@ result = get_multiplied_digits(40203)
 
 # Выводим результат
 print(result)  # Ожидаемый вывод: 24
+
+# Дополнительная проверка для числа с нулями в конце
+result_with_zeros = get_multiplied_digits(40200)
+print(result_with_zeros)  # Ожидаемый вывод: 8
