@@ -1,74 +1,122 @@
 class House:
     def __init__(self, name, floors):
+        """
+        Инициализация объекта дома.
+        :param name: Название дома
+        :param floors: Количество этажей
+        """
         self.name = name
         self.floors = floors
 
     def __str__(self):
-        return f"\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435: {self.name}, \u043a\u043e\u043b-\u0432\u043e \u044d\u0442\u0430\u0436\u0435\u0439: {self.floors}"
+        """
+        Возвращает строковое представление объекта.
+        """
+        return f"Название: {self.name}, кол-во этажей: {self.floors}"
 
+    # Перегрузка оператора сравнения ==
     def __eq__(self, other):
-        if isinstance(other, House):
-            return self.floors == other.floors
-        return False
+        """
+        Проверяет равенство этажей.
+        :param other: Объект для сравнения
+        """
+        return isinstance(other, House) and self.floors == other.floors
 
+    # Перегрузка оператора <
     def __lt__(self, other):
-        if isinstance(other, House):
-            return self.floors < other.floors
-        return False
+        """
+        Проверяет, меньше ли количество этажей.
+        :param other: Объект для сравнения
+        """
+        return isinstance(other, House) and self.floors < other.floors
 
+    # Перегрузка оператора <=
     def __le__(self, other):
-        if isinstance(other, House):
-            return self.floors <= other.floors
-        return False
+        """
+        Проверяет, меньше или равно количество этажей.
+        :param other: Объект для сравнения
+        """
+        return isinstance(other, House) and self.floors <= other.floors
 
+    # Перегрузка оператора >
     def __gt__(self, other):
-        if isinstance(other, House):
-            return self.floors > other.floors
-        return False
+        """
+        Проверяет, больше ли количество этажей.
+        :param other: Объект для сравнения
+        """
+        return isinstance(other, House) and self.floors > other.floors
 
+    # Перегрузка оператора >=
     def __ge__(self, other):
-        if isinstance(other, House):
-            return self.floors >= other.floors
-        return False
+        """
+        Проверяет, больше или равно количество этажей.
+        :param other: Объект для сравнения
+        """
+        return isinstance(other, House) and self.floors >= other.floors
 
+    # Перегрузка оператора !=
     def __ne__(self, other):
-        if isinstance(other, House):
-            return self.floors != other.floors
-        return True
+        """
+        Проверяет неравенство этажей.
+        :param other: Объект для сравнения
+        """
+        return not self.__eq__(other)
 
+    # Перегрузка оператора +
     def __add__(self, value):
+        """
+        Увеличивает количество этажей на указанное значение.
+        :param value: Количество этажей для добавления
+        """
         if isinstance(value, int):
             self.floors += value
         return self
 
+    # Перегрузка оператора +, когда объект находится справа
     def __radd__(self, value):
+        """
+        Обрабатывает добавление, когда число слева, а объект справа.
+        :param value: Количество этажей для добавления
+        """
         return self.__add__(value)
 
+    # Перегрузка оператора +=
     def __iadd__(self, value):
+        """
+        Обрабатывает добавление для оператора +=.
+        :param value: Количество этажей для добавления
+        """
         return self.__add__(value)
 
-# Example usage:
+# Пример использования
 if __name__ == "__main__":
-    h1 = House('\u0416\u041a \u042d\u043b\u044c\u0431\u0440\u0443\u0441', 10)
-    h2 = House('\u0416\u041a \u0410\u043a\u0430\u0446\u0438\u044f', 20)
+    # Создаем два дома
+    h1 = House('ЖК Эльбрус', 10)
+    h2 = House('ЖК Акация', 20)
 
+    # Вывод информации о домах
     print(h1)
     print(h2)
 
-    print(h1 == h2)  # __eq__
+    # Сравнение домов по количеству этажей
+    print(h1 == h2)  # Равны ли этажи
 
-    h1 = h1 + 10  # __add__
+    # Добавление этажей к первому дому
+    h1 = h1 + 10  # Увеличиваем этажи на 10
     print(h1)
-    print(h1 == h2)
+    print(h1 == h2)  # Сравниваем снова
 
-    h1 += 10  # __iadd__
+    # Использование оператора +=
+    h1 += 10
     print(h1)
 
-    h2 = 10 + h2  # __radd__
+    # Использование оператора +, когда число слева
+    h2 = 10 + h2
     print(h2)
 
-    print(h1 > h2)  # __gt__
-    print(h1 >= h2)  # __ge__
-    print(h1 < h2)  # __lt__
-    print(h1 <= h2)  # __le__
-    print(h1 != h2)  # __ne__
+    # Сравнения домов
+    print(h1 > h2)  # h1 больше h2?
+    print(h1 >= h2) # h1 больше или равен h2?
+    print(h1 < h2)  # h1 меньше h2?
+    print(h1 <= h2) # h1 меньше или равен h2?
+    print(h1 != h2) # h1 не равен h2?
