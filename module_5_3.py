@@ -1,5 +1,3 @@
-# module_5_3.py
-
 class House:
     def __init__(self, name, floors):
         self.name = name
